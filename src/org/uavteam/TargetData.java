@@ -2,6 +2,7 @@ package org.uavteam;
 
 import java.awt.*;
 
+
 /**
  * Created by jtb20 on 6/5/2017.
  */
@@ -34,8 +35,10 @@ public class TargetData {
         this.letter = "A";
         this.letterColor = "White";
     }
-    public void addTarget(Image t, double lat, double lon ){
+    public void addTarget(Image t ){
         target=t;
+    }
+    public void setLocation(double lat, double lon){
         this.lat=lat;
         this.lon=lon;
     }
@@ -48,7 +51,12 @@ public class TargetData {
         letter=l;
         letterColor=lColor;
     }
-    public void saveTarget(String directory, String filename) {//FIXME
-        //write image
-    }
+    public String getRotation(){return rotation;}
+    public String getShape(){return shape;}
+    public String getShapeColor(){return shapeColor;}
+    public String getLetterColor(){return letterColor;}
+    public String getLetter(){return letter;}
+    public double getLat(){return lat;}
+    public double getLon(){return lon;}
+    public Image getTarget(){return target;}
 }

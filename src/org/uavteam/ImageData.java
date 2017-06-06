@@ -3,6 +3,7 @@ package org.uavteam;
 import org.uavteam.TargetData;
 
 import java.awt.*;
+//TODO: Setup target cropping and localizing
 
 /**
  * Created by James on 6/5/2017.
@@ -56,21 +57,21 @@ public class ImageData {
         target.setMetaData(shape, sColor, letter, lColor);
     }
     public void cropTarget(int x1, int y1, int x2, int y2){//FIXME
-        double xc=(x1+x2)/2.0;
-        double yc=(y1+y2)/2.0;
-        //do math to convert lat and lon
-        double targetLat=lat;
-        double targetLon=lon;
         //crop out target
         Image imgCropped=img;
 
-        target.addTarget(imgCropped,targetLat,targetLon);
+        target.addTarget(imgCropped);
 
 
     }
-    public void setTargetCenter(int x, int y){
+    public void setTargetCenter(int x, int y){//FIXME
         this.tx=x;
         this.ty=y;
+
+        //do math to convert lat and lon from image center to target center
+        double targetLat=lat;
+        double targetLon=lon;
+        target.setLocation(targetLat,targetLon);
     }
     public TargetData getTarget(){
         return target;

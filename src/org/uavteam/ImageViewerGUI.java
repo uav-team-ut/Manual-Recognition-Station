@@ -89,13 +89,18 @@ public class ImageViewerGUI {
         state=0;
         c=new Canvas();
         c.setPreferredSize(new Dimension(ImagePanel.getWidth(),this.ImagePanel.getHeight()));
+        ImagePanel.setLayout(new GridLayout());
+        ImagePanel.add(c);
+        currImage=null;
+        topLeft=new Point(0,0);
+    }
+    public void start(){
+
         c.createBufferStrategy(2);
         bs=c.getBufferStrategy();
         bufferImage=new BufferedImage(ImagePanel.getWidth(),ImagePanel.getHeight(),BufferedImage.TYPE_INT_RGB);
         buffer=bufferImage.createGraphics();
         buffer.setBackground(Color.lightGray);
-        currImage=null;
-        topLeft.setLocation(0,0);
     }
     public void setImagePanel(Image img){
         Graphics2D g = (Graphics2D)bs.getDrawGraphics();
@@ -134,26 +139,26 @@ public class ImageViewerGUI {
 
     }
     private void initShapeColorBox(){
-        ShapeBox.addItem("Red");
-        ShapeBox.addItem("Green");
-        ShapeBox.addItem("Orange");
-        ShapeBox.addItem("Black");
-        ShapeBox.addItem("Yellow");
-        ShapeBox.addItem("Blue");
-        ShapeBox.addItem("Purple");
-        ShapeBox.addItem("White");
-        ShapeBox.addItem("Grey");
+        ShapeColorBox.addItem("Red");
+        ShapeColorBox.addItem("Green");
+        ShapeColorBox.addItem("Orange");
+        ShapeColorBox.addItem("Black");
+        ShapeColorBox.addItem("Yellow");
+        ShapeColorBox.addItem("Blue");
+        ShapeColorBox.addItem("Purple");
+        ShapeColorBox.addItem("White");
+        ShapeColorBox.addItem("Grey");
 
     }
     private void initLetterColorBox(){
-        ShapeBox.addItem("Red");
-        ShapeBox.addItem("Green");
-        ShapeBox.addItem("Orange");
-        ShapeBox.addItem("Black");
-        ShapeBox.addItem("Yellow");
-        ShapeBox.addItem("Blue");
-        ShapeBox.addItem("Purple");
-        ShapeBox.addItem("White");
-        ShapeBox.addItem("Grey");
+        LetterColorBox.addItem("Red");
+        LetterColorBox.addItem("Green");
+        LetterColorBox.addItem("Orange");
+        LetterColorBox.addItem("Black");
+        LetterColorBox.addItem("Yellow");
+        LetterColorBox.addItem("Blue");
+        LetterColorBox.addItem("Purple");
+        LetterColorBox.addItem("White");
+        LetterColorBox.addItem("Grey");
     }
 }

@@ -15,9 +15,11 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
         //allow user to clear screen or go back if need be
         //give submit button capabilities
         JFrame frame=new JFrame("Manual Recognition Station");
-        frame.setContentPane(new ImageViewerGUI().ImageViewerPanel);
+        ImageViewerGUI ivg=new ImageViewerGUI();
+        frame.setContentPane(ivg.ImageViewerPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        ivg.start();
         frame.setVisible(true);
         frame.requestFocus();
     }
