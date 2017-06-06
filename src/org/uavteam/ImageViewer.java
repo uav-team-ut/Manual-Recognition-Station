@@ -1,3 +1,7 @@
+package org.uavteam;
+
+import javax.swing.*;
+
 /**
  * Created by James on 6/5/2017.
  */
@@ -10,9 +14,17 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
         //on find target, all user to crop target, specify rotation of letter with a dot, and add metadata to a form on the side
         //allow user to clear screen or go back if need be
         //give submit button capabilities
-        ImageViewerWindow ivw=new ImageViewerWindow(1200,800);
-        ivw.pack();
-        ivw.setVisible(true);
-        ivw.requestFocus();
+        JFrame frame=new JFrame("Manual Recognition Station");
+        frame.setContentPane(new ImageViewerGUI().ImageViewerPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.requestFocus();
+    }
+    public static ImageData getNextImage(){
+        return null;
+    }
+    public static void submitImage(TargetData target){
+
     }
 }
