@@ -3,13 +3,14 @@ package org.uavteam;
 import org.uavteam.TargetData;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 //TODO: Setup target cropping and localizing
 
 /**
  * Created by James on 6/5/2017.
  */
 public class ImageData {
-    Image img;
+    BufferedImage img;
     TargetData target;
     double lat;
     double lon;
@@ -19,7 +20,8 @@ public class ImageData {
     double yaw;
     double tx;
     double ty;
-    public ImageData(Image img, double lat, double lon, double alt, double width, double height, double yaw){
+    String id;
+    public ImageData(BufferedImage img, double lat, double lon, double alt, double width, double height, double yaw, String id){
         this.img=img;
         this.lat=lat;
         this.lon=lon;
@@ -29,7 +31,8 @@ public class ImageData {
         this.yaw=yaw;
         tx=0;
         ty=0;
-        target = new TargetData(lat,lon);
+        this.id=id;
+        target = new TargetData(lat,lon, id);
     }
     public void setTargetRotation(int x, int y){
         double rot=Math.atan2(y-ty,x-tx);
@@ -58,7 +61,7 @@ public class ImageData {
     }
     public void cropTarget(int x1, int y1, int x2, int y2){//FIXME
         //crop out target
-        Image imgCropped=img;
+        BufferedImage imgCropped=img;
 
         target.addTarget(imgCropped);
 
@@ -73,6 +76,7 @@ public class ImageData {
         double targetLon=lon;
         target.setLocation(targetLat,targetLon);
     }
+    public String getId(){return id;}
     public TargetData getTarget(){
         return target;
     }

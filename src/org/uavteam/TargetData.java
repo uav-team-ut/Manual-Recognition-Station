@@ -1,13 +1,14 @@
 package org.uavteam;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 
 /**
  * Created by jtb20 on 6/5/2017.
  */
 public class TargetData {
-    Image target;
+    BufferedImage target;
     double lat;
     double lon;
     String rotation;
@@ -15,7 +16,8 @@ public class TargetData {
     String shapeColor;
     String letterColor;
     String letter;
-    public TargetData(Image t, double lat, double lon, String rot, String shape, String sColor, String letter, String lColor){
+    String id;
+    public TargetData(BufferedImage t, double lat, double lon, String rot, String shape, String sColor, String letter, String lColor, String id){
         target=t;
         this.lat=lat;
         this.lon=lon;
@@ -24,8 +26,9 @@ public class TargetData {
         this.shapeColor=sColor;
         this.letter=letter;
         this.letterColor=lColor;
+        this.id=id;
     }
-    public TargetData(double lat, double lon) {
+    public TargetData(double lat, double lon, String id) {
         target = null;
         this.lat = lat;
         this.lon = lon;
@@ -34,8 +37,9 @@ public class TargetData {
         this.shapeColor = "Orange";
         this.letter = "A";
         this.letterColor = "White";
+        this.id=id;
     }
-    public void addTarget(Image t ){
+    public void addTarget(BufferedImage t ){
         target=t;
     }
     public void setLocation(double lat, double lon){
@@ -58,5 +62,6 @@ public class TargetData {
     public String getLetter(){return letter;}
     public double getLat(){return lat;}
     public double getLon(){return lon;}
-    public Image getTarget(){return target;}
+    public BufferedImage getImage(){return target;}
+    public String getId(){return id;}
 }

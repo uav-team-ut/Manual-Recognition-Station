@@ -31,8 +31,14 @@ public class ImageViewerGUI {
 
 
     public ImageViewerGUI() {
-        ImageViewerPanel.addKeyListener(new KeyAdapter(){
-            //if right arrow and state zero, go to next image
+        ImagePanel.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    currImage=ImageViewer.getNextImage();
+
+                }
+            }
         });
         ImagePanel.addMouseListener(new MouseAdapter() {
             @Override
@@ -45,23 +51,27 @@ public class ImageViewerGUI {
                     case 1:
                         //center
                         currImage.setTargetCenter((int)e.getPoint().getX(),(int)e.getPoint().getY());
+                        drawCircle(e.getPoint(),3);
                         state=2;
                         break;
                     case 2:
                         //top left corner
                         topLeft.setLocation(e.getPoint());//x and y of mouseclick
-
+                        drawCircle(e.getPoint(),5);
                         state=3;
                         break;
                     case 3:
                         //bottom right corner
                         currImage.cropTarget((int)topLeft.getX(),(int)e.getPoint().getX(),(int)topLeft.getY(),(int)e.getPoint().getY());
                         topLeft.setLocation(0,0);
+                        drawCircle(e.getPoint(),5);
+                        drawRect(topLeft,e.getPoint());
                         state=4;
                         break;
                     case 4:
                         //direction
                         currImage.setTargetRotation((int)e.getPoint().getX(),(int)e.getPoint().getY());
+                        drawCircle(e.getPoint(),3);
                         state=5;
                         break;
                     case 5:
@@ -77,6 +87,7 @@ public class ImageViewerGUI {
                     currImage.setTargetMetaData(ShapeBox.getSelectedItem().toString(),ShapeColorBox.getSelectedItem().toString(),LetterField.getText(),LetterColorBox.getSelectedItem().toString());
                     ImageViewer.submitImage(currImage.getTarget());
                     state=0;
+                    currImage=ImageViewer.getNextImage();
                 }
             }
         });
@@ -93,6 +104,7 @@ public class ImageViewerGUI {
         ImagePanel.add(c);
         currImage=null;
         topLeft=new Point(0,0);
+
     }
     public void start(){
 
@@ -102,7 +114,7 @@ public class ImageViewerGUI {
         buffer=bufferImage.createGraphics();
         buffer.setBackground(Color.lightGray);
     }
-    public void setImagePanel(Image img){
+    public void setImagePanel(BufferedImage img){
         Graphics2D g = (Graphics2D)bs.getDrawGraphics();
         g.drawImage(img,0,0,ImageViewerPanel.getParent());
     }
@@ -121,10 +133,6 @@ public class ImageViewerGUI {
     }
     public void setLongitudeField(String s) {
         LongitudeField.setText(s);
-    }
-    public void setCurrImage(ImageData img)
-    {
-
     }
     private void initShapeBox(){
         ShapeBox.addItem("Circle");
