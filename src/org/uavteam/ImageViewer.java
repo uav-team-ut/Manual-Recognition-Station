@@ -31,9 +31,10 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
         frame.setContentPane(ivg.ImageViewerPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        ivg.start();
+
         frame.setVisible(true);
         frame.requestFocus();
+        ivg.start();
     }
     public static ImageData getNextImage(){
         File dir=new File(imageDir);
@@ -45,7 +46,7 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
         });
         try {
             File imageFile=fileList[0];
-            File dataFile=new File(fileList[0].getAbsolutePath().substring(0,fileList[0].getName().length()-3)+"txt");
+            File dataFile=new File(fileList[0].getAbsolutePath().substring(0,fileList[0].getAbsolutePath().length()-3)+"txt");
             BufferedImage img = ImageIO.read(imageFile);
             FileReader fr = new FileReader(dataFile);
             BufferedReader br = new BufferedReader(fr);
@@ -53,8 +54,10 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
             ImageData imageData= new ImageData(img,Double.parseDouble(br.readLine()),Double.parseDouble(br.readLine()),Double.parseDouble
                     (br.readLine()),Double.parseDouble(br.readLine()),Double.parseDouble(br.readLine()),Double.parseDouble
                     (br.readLine()),fileList[0].getName().substring(5,fileList[0].getName().length()-3));
-            Files.move(imageFile.toPath(),Paths.get(imageDir+"\\"+imageFile.getName()),REPLACE_EXISTING);
-            Files.move(dataFile.toPath(),Paths.get(imageDir+"\\"+dataFile.getName()),REPLACE_EXISTING);
+            br.close();
+            fr.close();
+            Files.move(imageFile.toPath(),Paths.get(processedDir+"\\"+imageFile.getName()),REPLACE_EXISTING);
+            Files.move(dataFile.toPath(),Paths.get(processedDir+"\\"+dataFile.getName()),REPLACE_EXISTING);
             return imageData;
         }catch(IOException e){e.printStackTrace();}
         return null;
@@ -64,7 +67,19 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
             ImageIO.write(target.getImage(), "jpg", new File(targetDir+"\\target" + target.getId() + ".jpg"));
             FileWriter fw = new FileWriter(targetDir+"\\target"+target.getId()+".txt");
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(""+target.getLat()+"\n"+target.getLon()+"\n"+target.getRotation()+"\n"+target.getShape()+"\n"+target.getShapeColor()+"\n"+target.getLetter()+"\n"+target.getLetterColor());
+            bw.write(""+target.getLat());
+            bw.newLine();
+            bw.write(""+target.getLon());
+            bw.newLine();
+            bw.write(""+target.getRotation());
+            bw.newLine();
+            bw.write(""+target.getShape());
+            bw.newLine();
+            bw.write(""+target.getShapeColor());
+            bw.newLine();
+            bw.write(""+target.getLetter());
+            bw.newLine();
+            bw.write(""+target.getLetterColor());
             bw.close();
             fw.close();
         }catch(IOException e){e.printStackTrace();}

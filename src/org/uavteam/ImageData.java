@@ -61,7 +61,7 @@ public class ImageData {
     }
     public void cropTarget(int x1, int y1, int x2, int y2){//FIXME
         //crop out target
-        BufferedImage imgCropped=img;
+        BufferedImage imgCropped=img.getSubimage(x1,y1,x2-x1,y2-y1);
 
         target.addTarget(imgCropped);
 
@@ -77,6 +77,9 @@ public class ImageData {
         target.setLocation(targetLat,targetLon);
     }
     public String getId(){return id;}
+    public BufferedImage getImage(){return img;}
+    public double getLon(){return lon;}
+    public double getLat(){return lat;}
     public TargetData getTarget(){
         return target;
     }

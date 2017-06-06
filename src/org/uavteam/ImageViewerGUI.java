@@ -1,6 +1,9 @@
 package org.uavteam;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferStrategy;
@@ -10,7 +13,7 @@ import java.awt.image.BufferedImage;
  * Created by jtb20 on 6/5/2017.
  */
 public class ImageViewerGUI {
-    private JPanel ImagePanel;
+    public DrawablePanel ImagePanel;
     private JPanel DataPanel;
     public JPanel ImageViewerPanel;
     private JButton SubmitButton;
@@ -20,6 +23,7 @@ public class ImageViewerGUI {
     private JTextField LatitudeField;
     private JTextField LongitudeField;
     private JComboBox LetterColorBox;
+    private JTextField InstructionsField;
 
     ImageData currImage;
     BufferStrategy bs;
@@ -31,55 +35,72 @@ public class ImageViewerGUI {
 
 
     public ImageViewerGUI() {
-        ImagePanel.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                    currImage=ImageViewer.getNextImage();
+        LetterColorBox=new ColorComboBox();
+        LetterField=new JTextField();
+        ShapeBox=new JComboBox();
+        ShapeColorBox = new ColorComboBox();
+        LatitudeField=new JTextField();
+        LongitudeField=new JTextField();
+        SubmitButton=new JButton("Submit");
+        InstructionsField=new JTextField();
 
-                }
-            }
-        });
-        ImagePanel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                switch(state){
-                    case 0:
-                        //want to process
-                        state=1;
-                        break;
-                    case 1:
-                        //center
-                        currImage.setTargetCenter((int)e.getPoint().getX(),(int)e.getPoint().getY());
-                        drawCircle(e.getPoint(),3);
-                        state=2;
-                        break;
-                    case 2:
-                        //top left corner
-                        topLeft.setLocation(e.getPoint());//x and y of mouseclick
-                        drawCircle(e.getPoint(),5);
-                        state=3;
-                        break;
-                    case 3:
-                        //bottom right corner
-                        currImage.cropTarget((int)topLeft.getX(),(int)e.getPoint().getX(),(int)topLeft.getY(),(int)e.getPoint().getY());
-                        topLeft.setLocation(0,0);
-                        drawCircle(e.getPoint(),5);
-                        drawRect(topLeft,e.getPoint());
-                        state=4;
-                        break;
-                    case 4:
-                        //direction
-                        currImage.setTargetRotation((int)e.getPoint().getX(),(int)e.getPoint().getY());
-                        drawCircle(e.getPoint(),3);
-                        state=5;
-                        break;
-                    case 5:
-                        //nothing
-                        break;
-                }
-            }
-        });
+        DataPanel=new JPanel();
+        DataPanel.setLayout(new GridBagLayout());
+        DataPanel.setPreferredSize(new Dimension(1280,80));
+        DataPanel.setBorder(new CompoundBorder(BorderFactory.createLineBorder(Color.black),new EmptyBorder(10,10,10,10)));
+        GridBagConstraints gbc=new GridBagConstraints();
+        gbc.fill=GridBagConstraints.BOTH;
+        gbc.weightx=.5;
+        gbc.weighty=.5;
+        gbc.insets=new Insets(5,5,5,5);
+
+        gbc.gridx=0;
+        gbc.gridy=0;
+        gbc.gridwidth=4;
+        gbc.weighty=.2;
+        DataPanel.add(InstructionsField,gbc);
+        gbc.gridwidth=1;
+        gbc.gridx=0;
+        gbc.gridy=1;
+        DataPanel.add(LatitudeField,gbc);
+        gbc.gridx=1;
+        gbc.gridy=1;
+        DataPanel.add(ShapeBox,gbc);
+        gbc.gridx=2;
+        gbc.gridy=1;
+        DataPanel.add(LetterField,gbc);
+        gbc.gridx=3;
+        gbc.gridy=1;
+        gbc.gridheight=2;
+        DataPanel.add(SubmitButton,gbc);
+        gbc.gridx=0;
+        gbc.gridy=2;
+        gbc.gridheight=1;
+        DataPanel.add(LongitudeField,gbc);
+        gbc.gridx=1;
+        gbc.gridy=2;
+        DataPanel.add(ShapeColorBox,gbc);
+        gbc.gridx=2;
+        gbc.gridy=2;
+        DataPanel.add(LetterColorBox,gbc);
+        ImagePanel= new DrawablePanel();
+        ImageViewerPanel = new JPanel();
+        GridBagConstraints gbc2=new GridBagConstraints();
+        ImageViewerPanel.setLayout(new GridBagLayout());
+        ImageViewerPanel.setPreferredSize(new Dimension(1280,720));
+        gbc2.gridx=0;
+        gbc2.gridy=0;
+        gbc2.fill=GridBagConstraints.BOTH;
+        gbc2.weighty=.95;
+        gbc2.weightx=1;
+        ImageViewerPanel.add(ImagePanel,gbc2);
+        gbc2.gridx=0;
+        gbc2.gridy=1;
+        gbc2.weightx=1;
+        gbc2.weighty=.05;
+        ImageViewerPanel.add(DataPanel,gbc2);
+
+
         SubmitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -87,19 +108,74 @@ public class ImageViewerGUI {
                     currImage.setTargetMetaData(ShapeBox.getSelectedItem().toString(),ShapeColorBox.getSelectedItem().toString(),LetterField.getText(),LetterColorBox.getSelectedItem().toString());
                     ImageViewer.submitImage(currImage.getTarget());
                     state=0;
-                    currImage=ImageViewer.getNextImage();
+                    nextImage();
                 }
             }
         });
         //setup the preliminary data or read it from a file
-        initLetterColorBox();
         initShapeBox();
-        initShapeColorBox();
+
 
 
         state=0;
         c=new Canvas();
         c.setPreferredSize(new Dimension(ImagePanel.getWidth(),this.ImagePanel.getHeight()));
+        c.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+                    nextImage();
+                }
+            }
+        });
+        c.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                int a=0;
+                System.out.println("Clicked");
+                switch(state){
+                    case 0:
+                        //want to process
+                        InstructionsField.setText("Click the center of the target");
+                        state=1;
+                        break;
+                    case 1:
+                        //center
+                        InstructionsField.setText("Click the top left corner of the target");
+                        currImage.setTargetCenter((int)e.getPoint().getX(),(int)e.getPoint().getY());
+                        drawCircle(e.getPoint(),3);
+                        state=2;
+                        break;
+                    case 2:
+                        //top left corner
+                        InstructionsField.setText("Click the bottom right corner of the target");
+                        topLeft.setLocation(e.getPoint());//x and y of mouseclick
+                        drawCircle(e.getPoint(),5);
+                        state=3;
+                        break;
+                    case 3:
+                        //bottom right corner
+                        currImage.cropTarget((int)topLeft.getX(),(int)topLeft.getY(),(int)e.getPoint().getX(),(int)e.getPoint().getY());
+                        InstructionsField.setText("Click to make the direction vector from the center of the target");
+                        drawCircle(e.getPoint(),5);
+                        drawRect(topLeft,e.getPoint());
+                        topLeft.setLocation(0,0);
+                        state=4;
+                        break;
+                    case 4:
+                        //direction
+                        InstructionsField.setText("Fill out any extra metadata");
+                        currImage.setTargetRotation((int)e.getPoint().getX(),(int)e.getPoint().getY());
+                        drawCircle(e.getPoint(),3);
+                        state=5;
+                        break;
+                    case 5:
+                        InstructionsField.setText("Nothing left to click here. Press the submit button to submit");
+                        //nothing
+                        break;
+                }
+            }
+        });
         ImagePanel.setLayout(new GridLayout());
         ImagePanel.add(c);
         currImage=null;
@@ -113,26 +189,32 @@ public class ImageViewerGUI {
         bufferImage=new BufferedImage(ImagePanel.getWidth(),ImagePanel.getHeight(),BufferedImage.TYPE_INT_RGB);
         buffer=bufferImage.createGraphics();
         buffer.setBackground(Color.lightGray);
+        nextImage();
     }
     public void setImagePanel(BufferedImage img){
         Graphics2D g = (Graphics2D)bs.getDrawGraphics();
-        g.drawImage(img,0,0,ImageViewerPanel.getParent());
+        g.drawImage(img,0,0,c);
+        bs.show();
+
     }
     public void drawCircle(Point p,int radius){
         Graphics2D g = (Graphics2D)bs.getDrawGraphics();
         g.setColor(Color.red);
         g.fillOval((int)p.getX()-radius/2,(int)p.getY()-radius/2,radius*2,radius*2);
+        bs.show();
     }
     public void drawRect(Point p1,Point p2){
         Graphics2D g = (Graphics2D)bs.getDrawGraphics();
         g.setColor(Color.red);
         g.drawRect((int)p1.getX(),(int)p1.getY(),(int)(p2.getX()-p1.getX()),(int)(p2.getY()-p1.getY()));
+        bs.show();
     }
-    public void setLatitudeField(String s){
-        LatitudeField.setText(s);
-    }
-    public void setLongitudeField(String s) {
-        LongitudeField.setText(s);
+    public void nextImage() {
+        currImage=ImageViewer.getNextImage();
+        LatitudeField.setText("Latitude: "+currImage.getLat());
+        LongitudeField.setText("Longitude: "+currImage.getLon());
+        setImagePanel(currImage.getImage());
+        InstructionsField.setText("Click the image to specify a target\nPress the right arrow to skip");
     }
     private void initShapeBox(){
         ShapeBox.addItem("Circle");
@@ -146,27 +228,5 @@ public class ImageViewerGUI {
         ShapeBox.addItem("Diamond");
 
     }
-    private void initShapeColorBox(){
-        ShapeColorBox.addItem("Red");
-        ShapeColorBox.addItem("Green");
-        ShapeColorBox.addItem("Orange");
-        ShapeColorBox.addItem("Black");
-        ShapeColorBox.addItem("Yellow");
-        ShapeColorBox.addItem("Blue");
-        ShapeColorBox.addItem("Purple");
-        ShapeColorBox.addItem("White");
-        ShapeColorBox.addItem("Grey");
 
-    }
-    private void initLetterColorBox(){
-        LetterColorBox.addItem("Red");
-        LetterColorBox.addItem("Green");
-        LetterColorBox.addItem("Orange");
-        LetterColorBox.addItem("Black");
-        LetterColorBox.addItem("Yellow");
-        LetterColorBox.addItem("Blue");
-        LetterColorBox.addItem("Purple");
-        LetterColorBox.addItem("White");
-        LetterColorBox.addItem("Grey");
-    }
 }
