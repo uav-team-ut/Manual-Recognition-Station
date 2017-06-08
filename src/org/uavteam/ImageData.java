@@ -21,23 +21,20 @@ public class ImageData {
     double tx;
     double ty;
     String id;
-    public ImageData(BufferedImage img, double lat, double lon, double alt, double width, double height, double yaw, String id){
+    public ImageData(BufferedImage img, double lat, double lon, double width, double height, String id){
         this.img=img;
         this.lat=lat;
         this.lon=lon;
-        this.alt=alt;
         this.width=width;
         this.height=height;
-        this.yaw=yaw;
         tx=0;
         ty=0;
         this.id=id;
         target = new TargetData(lat,lon, id);
     }
     public void setTargetRotation(int x, int y){
-        double rot=Math.atan2(ty-y,x-tx);
+        double dir=Math.atan2(y-ty,x-tx);
         String dirString="";
-        double dir=rot+yaw>Math.PI*2?rot+yaw-Math.PI*2:rot+yaw;
         if(dir>Math.PI*15/8||dir<Math.PI/8)
             dirString="e";
         else if(dir>Math.PI/8||dir<Math.PI*3/8)
