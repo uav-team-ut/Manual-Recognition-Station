@@ -41,7 +41,7 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
         File[] fileList=dir.listFiles(new FileFilter(){
             public boolean accept(File file)
             {
-                return file.getAbsolutePath().toLowerCase().endsWith(".jpg");
+                return file.getAbsolutePath().toLowerCase().endsWith(".png");
             }
         });
         try {
@@ -53,7 +53,7 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
 
             ImageData imageData= new ImageData(img,Double.parseDouble(br.readLine()),Double.parseDouble(br.readLine()),Double.parseDouble
                     (br.readLine()),Double.parseDouble(br.readLine()),Double.parseDouble(br.readLine()),Double.parseDouble
-                    (br.readLine()),fileList[0].getName().substring(5,fileList[0].getName().length()-3));
+                    (br.readLine()),fileList[0].getName().substring(5,fileList[0].getName().length()-4));
             br.close();
             fr.close();
             Files.move(imageFile.toPath(),Paths.get(processedDir+"\\"+imageFile.getName()),REPLACE_EXISTING);
@@ -64,7 +64,7 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
     }
     public static void submitImage(TargetData target){
         try {
-            ImageIO.write(target.getImage(), "jpg", new File(targetDir+"\\target" + target.getId() + ".jpg"));
+            ImageIO.write(target.getImage(), "png", new File(targetDir+"\\target" + target.getId() + ".jpg"));
             FileWriter fw = new FileWriter(targetDir+"\\target"+target.getId()+".txt");
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(""+target.getLat());

@@ -131,8 +131,6 @@ public class ImageViewerGUI {
         c.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                int a=0;
-                System.out.println("Clicked");
                 switch(state){
                     case 0:
                         //want to process
@@ -214,7 +212,7 @@ public class ImageViewerGUI {
         LatitudeField.setText("Latitude: "+currImage.getLat());
         LongitudeField.setText("Longitude: "+currImage.getLon());
         setImagePanel(currImage.getImage());
-        InstructionsField.setText("Click the image to specify a target\nPress the right arrow to skip");
+        InstructionsField.setText("Click the image to specify a target or press the right arrow to skip");
     }
     private void initShapeBox(){
         ShapeBox.addItem("Circle");

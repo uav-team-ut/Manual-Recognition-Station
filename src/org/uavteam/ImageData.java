@@ -35,9 +35,9 @@ public class ImageData {
         target = new TargetData(lat,lon, id);
     }
     public void setTargetRotation(int x, int y){
-        double rot=Math.atan2(y-ty,x-tx);
+        double rot=Math.atan2(ty-y,x-tx);
         String dirString="";
-        int dir=(int)Math.round((rot+yaw>Math.PI*2?rot+yaw-Math.PI*2:rot+yaw));
+        double dir=rot+yaw>Math.PI*2?rot+yaw-Math.PI*2:rot+yaw;
         if(dir>Math.PI*15/8||dir<Math.PI/8)
             dirString="e";
         else if(dir>Math.PI/8||dir<Math.PI*3/8)
