@@ -49,7 +49,7 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
     }
     public static ImageData getNextImage(){
         try {
-            URL url = new URL("http://127.0.0.1:25005/api/images");//FIXME
+            URL url = new URL("http://127.0.0.1:25005/api/images?autonomous=false&count=1");//FIXME
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             //do I need a header?
