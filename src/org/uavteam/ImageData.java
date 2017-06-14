@@ -53,8 +53,8 @@ public class ImageData {
             dirString="se";
         target.setRotation(dirString);
     }
-    public void setTargetMetaData(String shape, String sColor, String letter, String lColor) {
-        target.setMetaData(shape, sColor, letter, lColor);
+    public void setTargetMetaData(String shape, String sColor, String letter, String lColor, String t) {
+        target.setMetaData(shape, sColor, letter, lColor, t);
     }
     public void cropTarget(int x1, int y1, int x2, int y2){//FIXME
         //crop out target

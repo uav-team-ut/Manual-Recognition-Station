@@ -17,7 +17,8 @@ public class TargetData {
     String letterColor;
     String letter;
     String id;
-    public TargetData(BufferedImage t, double lat, double lon, String rot, String shape, String sColor, String letter, String lColor, String id){
+    String type;
+    public TargetData(BufferedImage t, double lat, double lon, String rot, String shape, String sColor, String letter, String lColor, String id, String type){
         target=t;
         this.lat=lat;
         this.lon=lon;
@@ -27,17 +28,19 @@ public class TargetData {
         this.letter=letter;
         this.letterColor=lColor;
         this.id=id;
+        this.type=type;
     }
     public TargetData(double lat, double lon, String id) {
         target = null;
         this.lat = lat;
         this.lon = lon;
-        rotation = "";
+        rotation = "n";
         this.shape = "Semicircle";
         this.shapeColor = "Orange";
         this.letter = "A";
         this.letterColor = "White";
         this.id=id;
+        type="standard";
     }
     public void addTarget(BufferedImage t ){
         target=t;
@@ -49,11 +52,15 @@ public class TargetData {
     public void setRotation(String s) {
         rotation=s;
     }
-    public void setMetaData(String s, String sColor, String l, String lColor){
-        shape=s;
-        shapeColor=sColor;
-        letter=l;
-        letterColor=lColor;
+    public void setMetaData(String s, String sColor, String l, String lColor, String t){
+        shape=s.toLowerCase();
+        shapeColor=sColor.toLowerCase();
+        letter=l.toLowerCase();
+        letterColor=lColor.toLowerCase();
+        t=t.toLowerCase();
+        if(t.equals("standard")||t.equals("emergent")||t.equals("off-axis")) {
+            type = t;
+        }
     }
     public String getRotation(){return rotation;}
     public String getShape(){return shape;}
