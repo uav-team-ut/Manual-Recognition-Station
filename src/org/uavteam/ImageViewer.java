@@ -42,7 +42,7 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
         //allow user to clear screen or go back if need be
         //give submit button capabilities
         JFrame frame=new JFrame("Manual Recognition Station");
-        frame.setPreferredSize(new Dimension(1400,800));
+        frame.setPreferredSize(new Dimension(1280,1000));
         ImageViewerGUI ivg=new ImageViewerGUI();
         frame.setContentPane(ivg.ImageViewerPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,7 +62,7 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
             atPrevious=false;
             return imageData;
         }
-        while(true) {
+         while(true) {
             try {
                 URL url = new URL(baseIp+"/api/images?processed_manual=false&limit=1");
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -124,7 +124,12 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
 //        try {
 //            File imageFile=fileList[0];
 //           // File dataFile=new File(fileList[0].getAbsolutePath().substring(0,fileList[0].getAbsolutePath().length()-3)+"txt");
-//            BufferedImage img = ImageIO.read(imageFile);
+//            BufferedImage img = new BufferedImage(1280,720,BufferedImage.TYPE_INT_ARGB_PRE);
+//            //image=(BufferedImage)i2.getScaledInstance(1024,576,Image.SCALE_DEFAULT);
+//            Graphics2D g = img.createGraphics();
+//            g.setComposite(AlphaComposite.Src);
+//            AffineTransform at =AffineTransform.getScaleInstance(1920/1024,1080/576);
+//            g.drawRenderedImage(ImageIO.read(imageFile),at);
 //         //   FileReader fr = new FileReader(dataFile);
 //        //    BufferedReader br = new BufferedReader(fr);
 //            imageData=new ImageData(img,10.5,11.5,0,0,fileList[0].getName().substring(6,fileList[0].getName().length()-4));

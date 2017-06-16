@@ -35,21 +35,23 @@ public class ImageData {
         target = new TargetData(lat,lon, id);
     }
     public void setTargetRotation(int x, int y){
-        double dir= atan2(y-ty,x-tx);
+        double dir= atan2(ty-y,x-tx);
         String dirString="";
+        if(dir<0)
+            dir=dir+2*Math.PI;
         if(dir>Math.PI*15/8||dir<Math.PI/8)
             dirString="e";
-        else if(dir>Math.PI/8||dir<Math.PI*3/8)
+        else if(dir>Math.PI/8&&dir<Math.PI*3/8)
             dirString="ne";
-        else if(dir>Math.PI*3/8||dir<Math.PI*5/8)
+        else if(dir>Math.PI*3/8&&dir<Math.PI*5/8)
             dirString="n";
-        else if(dir>Math.PI*5/8||dir<Math.PI*7/8)
+        else if(dir>Math.PI*5/8&&dir<Math.PI*7/8)
             dirString="nw";
-        else if(dir>Math.PI*7/8||dir<Math.PI*9/8)
+        else if(dir>Math.PI*7/8&&dir<Math.PI*9/8)
             dirString="w";
-        else if(dir>Math.PI*9/8||dir<Math.PI*11/8)
+        else if(dir>Math.PI*9/8&&dir<Math.PI*11/8)
             dirString="sw";
-        else if(dir>Math.PI*11/8||dir<Math.PI*13/8)
+        else if(dir>Math.PI*11/8&&dir<Math.PI*13/8)
             dirString="s";
         else
             dirString="se";
@@ -83,16 +85,16 @@ public class ImageData {
         double ratioX=1.0*x/img.getWidth()-.5;
         double ratioY=.5-1.0*y/img.getHeight();
 
-        double x_enu=locX*(cos(lon+pi/2))+locY*(-cos(lat - pi/2)*sin(lon + pi/2))+locZ*(-sin(lat - pi/2)*sin(lon + pi/2));
+        double x_enu=locX*(cos(lon + pi/2))+locY*(-cos(lat - pi/2)*sin(lon + pi/2))+locZ*(-sin(lat - pi/2)*sin(lon + pi/2));
         double y_enu=locX*(sin(lon + pi/2))+locY*(cos(lat - pi/2)*cos(lon + pi/2))+locZ*(cos(lon + pi/2)*sin(lat - pi/2));
         double z_enu=locY*(-sin(lat - pi/2))+locZ*(cos(lat - pi/2));
 
         x_enu+=width*cos(yaw)*ratioX+height*sin(yaw)*ratioY;
         y_enu+=width*(-sin(yaw))*ratioX+height*cos(yaw)*ratioY;
 
-        locX=x_enu*(cos(lon + pi/2))+y_enu*(cos(lat - pi/2)*sin(lon + pi/2))+z_enu*(-sin(lat - pi/2)*sin(lon + pi/2));
-        locY=x_enu*(-sin(lon + pi/2))+y_enu*( cos(lat - pi/2)*cos(lon + pi/2))+z_enu*(-cos(lon + pi/2)*sin(lat - pi/2));
-        locZ=y_enu*(sin(lat - pi/2))+z_enu*(cos(lat - pi/2));
+        locX=x_enu*(cos(lon + pi/2))+y_enu*(sin(lon + pi/2));
+        locY=x_enu*(-cos(lat - pi/2)*sin(lon + pi/2))+y_enu*( cos(lat - pi/2)*cos(lon + pi/2))+z_enu*(-sin(lat - pi/2));
+        locZ=x_enu*(-sin(lat - pi/2)*sin(lon + pi/2))+y_enu*(cos(lon + pi/2)*sin(lat - pi/2))+z_enu*(cos(lat - pi/2));
 
         double f=1/298.257223563;
         double e=sqrt(f*(2-f));
