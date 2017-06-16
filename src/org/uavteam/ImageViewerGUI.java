@@ -28,6 +28,7 @@ public class ImageViewerGUI {
     private JTextField InstructionsField;
     private JTextField IdField;
     private JTextField TypeField;
+    private JTextField DescField;
 
     ImageData currImage;
     BufferStrategy bs;
@@ -41,12 +42,15 @@ public class ImageViewerGUI {
     public ImageViewerGUI() {
         LetterColorBox=new ColorComboBox();
         LetterColorBox.setEditable(true);
+        LetterColorBox.setLightWeightPopupEnabled(false);
         LetterField=new JTextField();
         LetterField.setText("A");
         ShapeBox=new JComboBox();
         ShapeBox.setEditable(true);
+        ShapeBox.setLightWeightPopupEnabled(false);
         ShapeColorBox = new ColorComboBox();
         ShapeColorBox.setEditable(true);
+        ShapeColorBox.setLightWeightPopupEnabled(false);
         LatitudeField=new JTextField();
         LatitudeField.setEditable(false);
         LongitudeField=new JTextField();
@@ -59,6 +63,9 @@ public class ImageViewerGUI {
         IdField.setEditable(false);
         TypeField=new JTextField();
         TypeField.setText("standard");
+        DescField=new JTextField();
+        DescField.setText("");
+        DescField.setEditable(false);
 
         DataPanel=new JPanel();
         DataPanel.setLayout(new GridBagLayout());
@@ -108,6 +115,9 @@ public class ImageViewerGUI {
         gbc.gridx=2;
         gbc.gridy=2;
         DataPanel.add(LetterColorBox,gbc);
+        gbc.gridx=3;
+        gbc.gridy=2;
+        DataPanel.add(DescField,gbc);
         gbc.gridx=4;
         gbc.gridy=2;
         DataPanel.add(PreviousButton,gbc);
@@ -133,6 +143,9 @@ public class ImageViewerGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(state==5){
+                    DescField.setText("");
+                    DescField.setEditable(false);
+                    TypeField.setText("standard");
                     currImage.setTargetMetaData(ShapeBox.getSelectedItem().toString(),ShapeColorBox.getSelectedItem().toString(),LetterField.getText(),LetterColorBox.getSelectedItem().toString(),TypeField.getText());
                     SubmitThread thread=new SubmitThread(currImage.getTarget());
                     thread.start();
@@ -141,6 +154,7 @@ public class ImageViewerGUI {
                     Thread.sleep(5);}
                     catch (Exception exc){exc.printStackTrace();}
                     nextImage();
+
                 }
             }
         });
@@ -165,6 +179,19 @@ public class ImageViewerGUI {
                 state=0;
                 triggerInstructions();
                 IdField.setText("Id: "+currImage.getId());
+            }
+        });
+        TypeField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(!DescField.isEditable()) {
+                    DescField.setEditable(true);
+//                    try{
+//                        Thread.sleep(1000);
+//                    }catch(Exception exc){exc.printStackTrace();}
+                   // DataPanel.repaint();
+                }
+
             }
         });
         //setup the preliminary data or read it from a file

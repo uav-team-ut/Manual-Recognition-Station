@@ -70,5 +70,6 @@ public class TargetData {
     public double getLat(){return lat;}
     public double getLon(){return lon;}
     public BufferedImage getImage(){return target;}
+    public String getType(){return type;}
     public String getId(){return id;}
 }

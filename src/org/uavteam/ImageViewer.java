@@ -3,6 +3,8 @@ package org.uavteam;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -28,6 +30,7 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
     static String imageDir="C:\\images_unprocessed";
     static String processedDir="C:\\images_processed";
     static String targetDir="C:\\targets";
+    static String baseIp = "http://192.168.0.13:25005";
     static ImageData imageData,previousImageData;
     static int count;
     static boolean atPrevious;
@@ -59,121 +62,140 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
             atPrevious=false;
             return imageData;
         }
-//        while(true) {
-//            try {
-//                URL url = new URL("http://127.0.0.1:25005/api/images?autonomous=false&count=1");//FIXME
-//                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//                con.setRequestMethod("GET");
-//                //do I need a header?
-//
-//                int responseCode = con.getResponseCode();
-//                System.out.println("\nSending 'GET' request to URL : " + url);
-//                System.out.println("Response Code : " + responseCode);
-//
-//                BufferedReader in = new BufferedReader(
-//                        new InputStreamReader(con.getInputStream(), Charset.forName("UTF-8")));
-//                String inputLine;
-//                StringBuffer response = new StringBuffer();
-//
-//                while ((inputLine = in.readLine()) != null) {
-//                    response.append(inputLine);
-//                }
-//                in.close();
-//
-//                JSONObject jsonImage = new JSONObject(response);
-//                if(!jsonImage.has("data_warped"))
-//                    continue;
-//                BASE64Decoder bd = new BASE64Decoder();
-//                BufferedImage image = ImageIO.read(new ByteArrayInputStream(bd.decodeBuffer(jsonImage.getString("data_warped"))));
-//                return new ImageData(image, jsonImage.getDouble("lat"), jsonImage.getDouble("lon"), jsonImage.getDouble("width"), jsonImage.getDouble("height"), "" + count++);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-        File dir=new File(imageDir);
-        File[] fileList=dir.listFiles(new FileFilter(){
-            public boolean accept(File file)
-            {
-                return file.getAbsolutePath().toLowerCase().endsWith(".png");
+        while(true) {
+            try {
+                URL url = new URL(baseIp+"/api/images?processed_manual=false&limit=1");
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+                //do I need a header?
+
+                int responseCode = con.getResponseCode();
+                System.out.println("\nSending 'GET' request to URL : " + url);
+                System.out.println("Response Code : " + responseCode);
+
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(con.getInputStream(), Charset.forName("UTF-8")));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+                in.close();
+                JSONObject jsonImage = new JSONObject(response.substring(1,response.length()-1));
+                if(!jsonImage.has("data_warped"))
+                    continue;
+                BASE64Decoder bd = new BASE64Decoder();
+                //BufferedImage i2=ImageIO.read(new ByteArrayInputStream(bd.decodeBuffer(jsonImage.getString("data_warped"))));
+                BufferedImage image = new BufferedImage(1024,576,BufferedImage.TYPE_INT_ARGB_PRE);
+                //image=(BufferedImage)i2.getScaledInstance(1024,576,Image.SCALE_DEFAULT);
+                Graphics2D g = image.createGraphics();
+                g.setComposite(AlphaComposite.Src);
+                AffineTransform at =AffineTransform.getScaleInstance(1920/1024,1080/576);
+                g.drawRenderedImage(ImageIO.read(new ByteArrayInputStream(bd.decodeBuffer(jsonImage.getString("data_warped")))),at);
+
+
+                String postDataString="{\"processed_manual\":false}";
+                byte[] postData=postDataString.getBytes(StandardCharsets.UTF_8);
+                URL url2 = new URL(baseIp+"/api/images/"+jsonImage.getString("_id"));
+                HttpURLConnection con2 = (HttpURLConnection) url2.openConnection();
+                con2.setDoOutput(true);
+                con2.setRequestMethod("PUT");
+                con2.setRequestProperty("Content-Type","application/json");
+                con2.setRequestProperty("Content-Length",""+postData.length);
+                con2.setRequestProperty("charset","utf-8");
+                DataOutputStream wr=new DataOutputStream(con2.getOutputStream());
+                wr.write(postData);
+                System.out.println("\nSending 'PATCH' request to URL : " + url2);
+                System.out.println("Response Code : " + con2.getResponseCode());
+                return new ImageData(image, jsonImage.getDouble("lat"), jsonImage.getDouble("lon"), jsonImage.getDouble("width"), jsonImage.getDouble("height"), "" + count++);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
-        try {
-            File imageFile=fileList[0];
-         //   File dataFile=new File(fileList[0].getAbsolutePath().substring(0,fileList[0].getAbsolutePath().length()-3)+"txt");
-            BufferedImage img = ImageIO.read(imageFile);
-         //   FileReader fr = new FileReader(dataFile);
-        //    BufferedReader br = new BufferedReader(fr);
-            imageData=new ImageData(img,10.5,11.5,0,0,fileList[0].getName().substring(6,fileList[0].getName().length()-4));
-//           ImageData imageData= new ImageData(img,Double.parseDouble(br.readLine()),Double.parseDouble(br.readLine()),Double.parseDouble
-//                    (br.readLine()),Double.parseDouble(br.readLine()),fileList[0].getName().substring(5,fileList[0].getName().length()-3));
-            //br.close();
-           // fr.close();
-            Files.move(imageFile.toPath(),Paths.get(processedDir+"\\"+imageFile.getName()),REPLACE_EXISTING);
-           // Files.move(dataFile.toPath(),Paths.get(processedDir+"\\"+dataFile.getName()),REPLACE_EXISTING);
-            return imageData;
-        }catch(IOException e){e.printStackTrace();}
-        return null;
+            return null;
+        }
+//        File dir=new File(imageDir);
+//        File[] fileList=dir.listFiles(new FileFilter(){
+//            public boolean accept(File file)
+//            {
+//                return file.getAbsolutePath().toLowerCase().endsWith(".png");
+//            }
+//        });
+//        try {
+//            File imageFile=fileList[0];
+//           // File dataFile=new File(fileList[0].getAbsolutePath().substring(0,fileList[0].getAbsolutePath().length()-3)+"txt");
+//            BufferedImage img = ImageIO.read(imageFile);
+//         //   FileReader fr = new FileReader(dataFile);
+//        //    BufferedReader br = new BufferedReader(fr);
+//            imageData=new ImageData(img,10.5,11.5,0,0,fileList[0].getName().substring(6,fileList[0].getName().length()-4));
+////           ImageData imageData= new ImageData(img,Double.parseDouble(br.readLine()),Double.parseDouble(br.readLine()),Double.parseDouble
+////                    (br.readLine()),Double.parseDouble(br.readLine()),fileList[0].getName().substring(5,fileList[0].getName().length()-3));
+//            //br.close();
+//           // fr.close();
+//            Files.move(imageFile.toPath(),Paths.get(processedDir+"\\"+imageFile.getName()),REPLACE_EXISTING);
+//          //  Files.move(dataFile.toPath(),Paths.get(processedDir+"\\"+dataFile.getName()),REPLACE_EXISTING);
+//        return imageData;
+//        }catch(IOException e){e.printStackTrace();}
+//        return null;
     }
     public static void submitImage(TargetData target){
-//        try{
-//            BASE64Encoder be = new BASE64Encoder();
-//            ByteArrayOutputStream baos=new ByteArrayOutputStream();
-//            ImageIO.write(target.getImage(),"png",baos);
-//            String imageString=be.encode(baos.toByteArray());
-//            String jsonStringNoData = "\",\"type\":\""+target.getType()+"\",\"latitude\":"+target.getLat()+",\"longitude\":"+target.getLon()+",\"orientation\":\""+target.getRotation() +
-//                    "\",\"shape\":\""+target.getShape()+"\",\"background_color\":\""+target.getShapeColor()+"\",\"alphanumeric\":\""
-//                    +target.getLetter()+"\",\"alphanumeric_color\":\""+target.getLetterColor()
-//                    +"\",\"autonomous\":false}";
-//            String jsonString="{\"data\":\"";
-//            String temp="";
-//            for(int i=0;i<imageString.length();i++){
-//                if(imageString.charAt(i)==13 || imageString.charAt(i)==10){
-//                    continue;//lmao?
-//                }
-//                jsonString+=imageString.charAt(i);
-//                temp+=imageString.charAt(i);
-//            }
-//            jsonString+=jsonStringNoData;
-            //BASE64Decoder bd = new BASE64Decoder();
-            //BufferedImage image = ImageIO.read(new ByteArrayInputStream(bd.decodeBuffer(temp)));
-          //  System.out.println((int)jsonString.charAt(84)+"\t"+(int)jsonString.charAt(85)+"\t"+(int)jsonString.charAt(86));
-           // System.out.println(jsonString);
-//            byte[] postData=jsonString.getBytes(StandardCharsets.UTF_8);
-//            URL url = new URL("http://127.0.0.1:25005/api/targets");//FIXME
-//
-//            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//            con.setDoOutput(true);
-//            con.setInstanceFollowRedirects(false);
-//            con.setRequestMethod("POST");
-//            con.setRequestProperty("Content-Type","application/json");
-//            con.setRequestProperty("Content-Length",""+postData.length);
-//            con.setRequestProperty("charset","utf-8");
-//            DataOutputStream wr=new DataOutputStream(con.getOutputStream());
-//            wr.write(postData);
-//            System.out.println(con.getResponseCode());
-//        }catch(Exception e){e.printStackTrace();}
-        try {
-            ImageIO.write(target.getImage(), "png", new File(targetDir+"\\target" + target.getId() + ".png"));
-            FileWriter fw = new FileWriter(targetDir+"\\target-"+target.getId()+".txt");
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(""+target.getLat());
-            bw.newLine();
-            bw.write(""+target.getLon());
-            bw.newLine();
-            bw.write(""+target.getRotation());
-            bw.newLine();
-            bw.write(""+target.getShape());
-            bw.newLine();
-            bw.write(""+target.getShapeColor());
-            bw.newLine();
-            bw.write(""+target.getLetter());
-            bw.newLine();
-            bw.write(""+target.getLetterColor());
-            bw.close();
-            fw.close();
-            previousImageData=imageData;
-            atPrevious=true;
-        }catch(IOException e){e.printStackTrace();}
+        try{
+            BASE64Encoder be = new BASE64Encoder();
+            ByteArrayOutputStream baos=new ByteArrayOutputStream();
+            ImageIO.write(target.getImage(),"png",baos);
+            String imageString=be.encode(baos.toByteArray());
+            String jsonStringNoData = "\",\"type\":\""+target.getType()+"\",\"latitude\":"+target.getLat()+",\"longitude\":"+target.getLon()+",\"orientation\":\""+target.getRotation() +
+                    "\",\"shape\":\""+target.getShape()+"\",\"background_color\":\""+target.getShapeColor()+"\",\"alphanumeric\":\""
+                    +target.getLetter()+"\",\"alphanumeric_color\":\""+target.getLetterColor()
+                    +"\",\"autonomous\":false}";
+            String jsonString="{\"data\":\"";
+            String temp="";
+            for(int i=0;i<imageString.length();i++){
+                if(imageString.charAt(i)==13 || imageString.charAt(i)==10){
+                    continue;//lmao?
+                }
+                jsonString+=imageString.charAt(i);
+                temp+=imageString.charAt(i);
+            }
+            jsonString+=jsonStringNoData;
+            //System.out.println((int)jsonString.charAt(84)+"\t"+(int)jsonString.charAt(85)+"\t"+(int)jsonString.charAt(86));
+            //System.out.println(jsonString);
+            byte[] postData=jsonString.getBytes(StandardCharsets.UTF_8);
+            URL url = new URL(baseIp+"/api/targets");//FIXME
+
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setDoOutput(true);
+            con.setInstanceFollowRedirects(false);
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type","application/json");
+            con.setRequestProperty("Content-Length",""+postData.length);
+            con.setRequestProperty("charset","utf-8");
+            DataOutputStream wr=new DataOutputStream(con.getOutputStream());
+            wr.write(postData);
+            System.out.println(con.getResponseCode());
+        }catch(Exception e){e.printStackTrace();}
+//        try {
+//            ImageIO.write(target.getImage(), "png", new File(targetDir+"\\target" + target.getId() + ".png"));
+//            FileWriter fw = new FileWriter(targetDir+"\\target-"+target.getId()+".txt");
+//            BufferedWriter bw = new BufferedWriter(fw);
+//            bw.write(""+target.getLat());
+//            bw.newLine();
+//            bw.write(""+target.getLon());
+//            bw.newLine();
+//            bw.write(""+target.getRotation());
+//            bw.newLine();
+//            bw.write(""+target.getShape());
+//            bw.newLine();
+//            bw.write(""+target.getShapeColor());
+//            bw.newLine();
+//            bw.write(""+target.getLetter());
+//            bw.newLine();
+//            bw.write(""+target.getLetterColor());
+//            bw.close();
+//            fw.close();
+//            previousImageData=imageData;
+//            atPrevious=true;
+//        }catch(IOException e){e.printStackTrace();}
     }
     public static ImageData getPreviousImage()
     {
