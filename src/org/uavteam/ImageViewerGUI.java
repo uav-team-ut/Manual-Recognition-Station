@@ -68,8 +68,8 @@ public class ImageViewerGUI {
         DescField.setEditable(false);
 
         DataPanel=new JPanel();
+        //DataPanel.setPreferredSize(new Dimension(1280,280));
         DataPanel.setLayout(new GridBagLayout());
-        DataPanel.setPreferredSize(new Dimension(1280,80));
         DataPanel.setBorder(new CompoundBorder(BorderFactory.createLineBorder(Color.black),new EmptyBorder(10,10,10,10)));
         GridBagConstraints gbc=new GridBagConstraints();
         gbc.fill=GridBagConstraints.BOTH;
@@ -83,7 +83,7 @@ public class ImageViewerGUI {
         gbc.weighty=.2;
         DataPanel.add(InstructionsField,gbc);
         gbc.gridwidth=1;
-        gbc.gridx=4;
+        gbc.gridx=5;
         gbc.gridy=0;
         DataPanel.add(IdField,gbc);
         gbc.gridx=0;
@@ -122,6 +122,7 @@ public class ImageViewerGUI {
         gbc.gridy=2;
         DataPanel.add(PreviousButton,gbc);
         ImagePanel= new DrawablePanel();
+        ImagePanel.setPreferredSize(new Dimension(1280,720));
         ImageViewerPanel = new JPanel();
         GridBagConstraints gbc2=new GridBagConstraints();
         ImageViewerPanel.setLayout(new GridBagLayout());
@@ -269,7 +270,6 @@ public class ImageViewerGUI {
         ImagePanel.add(c);
         currImage=null;
         topLeft=new Point(0,0);
-
     }
     public void start(){
 

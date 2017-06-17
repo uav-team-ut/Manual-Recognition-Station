@@ -7,28 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e458240e-9732-486c-a8fa-8de21e93b84b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/ManualRecognitionStation_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src2/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src3/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageData.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewer$1.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewer$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewer.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$1.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$2.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$3.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$4.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$5.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/TargetData.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/TargetData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/.idea/misc.xml" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/.idea/workspace.xml" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/uavteam/ImageData.java" afterPath="$PROJECT_DIR$/src/org/uavteam/ImageData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/uavteam/ImageViewer.java" afterPath="$PROJECT_DIR$/src/org/uavteam/ImageViewer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java" afterPath="$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/uavteam/TargetData.java" afterPath="$PROJECT_DIR$/src/org/uavteam/TargetData.java" />
     </list>
     <ignored path="ManualRecognitionStation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,12 +33,10 @@
       <file leaf-file-name="ImageViewer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="132" column="25" selection-start-line="132" selection-start-column="25" selection-end-line="132" selection-end-column="25" />
+            <state relative-caret-position="227">
+              <caret line="66" column="75" selection-start-line="66" selection-start-column="75" selection-end-line="66" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5363#5364#0" expanded="true" />
-                <element signature="e#5455#5456#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,12 +45,10 @@
       <file leaf-file-name="ImageViewerGUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
+            <state relative-caret-position="5627">
               <caret line="331" column="0" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6269#6678#0" expanded="true" />
-                <element signature="e#6677#6678#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,9 +70,8 @@
             <state relative-caret-position="731">
               <caret line="44" column="43" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#1303#1304#0" expanded="false" />
-                <element signature="e#1329#1330#0" expanded="false" />
+                <element signature="e#1136#1137#0" expanded="true" />
+                <element signature="e#1160#1161#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -104,13 +80,9 @@
       <file leaf-file-name="ImageData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1445">
-              <caret line="90" column="41" selection-start-line="89" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#3331#3332#0" expanded="false" />
-                <element signature="e#3360#3361#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="1581">
+              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -154,8 +126,8 @@
         <option value="$PROJECT_DIR$/src/org/uavteam/DrawablePanel.java" />
         <option value="$PROJECT_DIR$/src/org/uavteam/SubmitThread.java" />
         <option value="$PROJECT_DIR$/src/org/uavteam/TargetData.java" />
-        <option value="$PROJECT_DIR$/src/org/uavteam/ImageData.java" />
         <option value="$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java" />
+        <option value="$PROJECT_DIR$/src/org/uavteam/ImageData.java" />
         <option value="$PROJECT_DIR$/src/org/uavteam/ImageViewer.java" />
       </list>
     </option>
@@ -505,12 +477,11 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33028722" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -519,9 +490,10 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994778" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40422723" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -571,13 +543,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/org/uavteam/ImageViewer.java</url>
-          <line>150</line>
-          <properties />
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/org/uavteam/ImageViewer.java</url>
-          <line>168</line>
+          <line>175</line>
           <properties />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
@@ -594,7 +560,7 @@
           <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="47" />
+      <option name="time" value="59" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -603,18 +569,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2703">
-          <caret line="159" column="49" selection-start-line="159" selection-start-column="49" selection-end-line="159" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6269#6678#0" expanded="true" />
-            <element signature="e#6677#6678#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/uavteam/DrawablePanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -628,9 +582,8 @@
         <state relative-caret-position="782">
           <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1303#1304#0" expanded="false" />
-            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1136#1137#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -639,11 +592,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3331#3332#0" expanded="false" />
-            <element signature="e#3360#3361#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -653,8 +602,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5363#5364#0" expanded="true" />
-            <element signature="e#5455#5456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -665,8 +612,6 @@
           <caret line="159" column="51" selection-start-line="159" selection-start-column="51" selection-end-line="159" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6269#6678#0" expanded="true" />
-            <element signature="e#6677#6678#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -684,9 +629,8 @@
         <state relative-caret-position="782">
           <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1303#1304#0" expanded="false" />
-            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1136#1137#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -695,11 +639,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1326">
           <caret line="81" column="39" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3331#3332#0" expanded="false" />
-            <element signature="e#3360#3361#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -709,8 +649,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5363#5364#0" expanded="true" />
-            <element signature="e#5455#5456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -721,8 +659,6 @@
           <caret line="159" column="51" selection-start-line="159" selection-start-column="51" selection-end-line="159" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6269#6678#0" expanded="true" />
-            <element signature="e#6677#6678#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -740,9 +676,8 @@
         <state relative-caret-position="782">
           <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1303#1304#0" expanded="false" />
-            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1136#1137#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -751,11 +686,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1326">
           <caret line="81" column="39" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3331#3332#0" expanded="false" />
-            <element signature="e#3360#3361#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -765,8 +696,6 @@
           <caret line="70" column="25" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5363#5364#0" expanded="true" />
-            <element signature="e#5455#5456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -777,8 +706,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6269#6678#0" expanded="true" />
-            <element signature="e#6677#6678#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -796,9 +723,8 @@
         <state relative-caret-position="782">
           <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1303#1304#0" expanded="false" />
-            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1136#1137#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -807,11 +733,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1326">
           <caret line="81" column="39" selection-start-line="81" selection-start-column="39" selection-end-line="81" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3331#3332#0" expanded="false" />
-            <element signature="e#3360#3361#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -821,8 +743,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5363#5364#0" expanded="true" />
-            <element signature="e#5455#5456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -833,8 +753,6 @@
           <caret line="144" column="39" selection-start-line="144" selection-start-column="39" selection-end-line="144" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6269#6678#0" expanded="true" />
-            <element signature="e#6677#6678#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -853,9 +771,8 @@
         <state relative-caret-position="680">
           <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1303#1304#0" expanded="false" />
-            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1136#1137#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -864,11 +781,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3331#3332#0" expanded="false" />
-            <element signature="e#3360#3361#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -878,8 +791,6 @@
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5363#5364#0" expanded="true" />
-            <element signature="e#5455#5456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -889,11 +800,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3331#3332#0" expanded="false" />
-            <element signature="e#3360#3361#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -902,9 +809,8 @@
         <state relative-caret-position="119">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1303#1304#0" expanded="false" />
-            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1136#1137#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -915,8 +821,6 @@
           <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5363#5364#0" expanded="true" />
-            <element signature="e#5455#5456#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -925,11 +829,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3331#3332#0" expanded="false" />
-            <element signature="e#3360#3361#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -971,9 +871,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="456" column="0" selection-start-line="456" selection-start-column="0" selection-end-line="457" selection-end-column="0" />
-          <folding>
-            <element signature="e#13958#13959#0" expanded="false" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/jre/lib/rt.jar!/sun/net/www/protocol/http/HttpURLConnection.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="320" column="0" selection-start-line="320" selection-start-column="0" selection-end-line="320" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -985,50 +889,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5627">
+          <caret line="331" column="0" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/uavteam/TargetData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
           <caret line="44" column="43" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1303#1304#0" expanded="false" />
-            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1136#1137#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="90" column="41" selection-start-line="89" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3331#3332#0" expanded="false" />
-            <element signature="e#3360#3361#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="331" column="0" selection-start-line="331" selection-start-column="0" selection-end-line="331" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6269#6678#0" expanded="true" />
-            <element signature="e#6677#6678#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1581">
+          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="132" column="25" selection-start-line="132" selection-start-column="25" selection-end-line="132" selection-end-column="25" />
+        <state relative-caret-position="227">
+          <caret line="66" column="75" selection-start-line="66" selection-start-column="75" selection-end-line="66" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5363#5364#0" expanded="true" />
-            <element signature="e#5455#5456#0" expanded="true" />
           </folding>
         </state>
       </provider>

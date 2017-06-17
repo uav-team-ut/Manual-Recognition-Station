@@ -17,7 +17,6 @@ import java.nio.file.Paths;
 import org.json.*;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
-import sun.net.www.http.HttpClient;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import static javafx.css.StyleOrigin.USER_AGENT;
@@ -86,16 +85,23 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
                 if(!jsonImage.has("data_warped"))
                     continue;
                 BASE64Decoder bd = new BASE64Decoder();
+                int imgX=1280;
+                int imgY=720;
                 //BufferedImage i2=ImageIO.read(new ByteArrayInputStream(bd.decodeBuffer(jsonImage.getString("data_warped"))));
-                BufferedImage image = new BufferedImage(1024,576,BufferedImage.TYPE_INT_ARGB_PRE);
-                //image=(BufferedImage)i2.getScaledInstance(1024,576,Image.SCALE_DEFAULT);
+                BufferedImage image = new BufferedImage(imgX,imgY,BufferedImage.TYPE_INT_ARGB_PRE);
+                BufferedImage fromServer= ImageIO.read(new ByteArrayInputStream(bd.decodeBuffer(jsonImage.getString("data_warped"))));
                 Graphics2D g = image.createGraphics();
                 g.setComposite(AlphaComposite.Src);
-                AffineTransform at =AffineTransform.getScaleInstance(1920/1024,1080/576);
-                g.drawRenderedImage(ImageIO.read(new ByteArrayInputStream(bd.decodeBuffer(jsonImage.getString("data_warped")))),at);
+                int x=fromServer.getWidth();
+                int y = fromServer.getHeight();
+                double zarg=1.0/(1.0*fromServer.getWidth()/imgX);
+                double barg=1.0/(1.0*fromServer.getHeight()/imgY);
+                double ratio=1.0*fromServer.getHeight()/fromServer.getWidth();
+                AffineTransform at =AffineTransform.getScaleInstance(1.0/(1.0*fromServer.getWidth()/imgX*ratio),1.0/(1.0*fromServer.getHeight()/(imgY)));
+                g.drawRenderedImage(fromServer,at);
 
 
-                String postDataString="{\"processed_manual\":false}";
+                String postDataString="{\"processed_manual\":true}";
                 byte[] postData=postDataString.getBytes(StandardCharsets.UTF_8);
                 URL url2 = new URL(baseIp+"/api/images/"+jsonImage.getString("_id"));
                 HttpURLConnection con2 = (HttpURLConnection) url2.openConnection();
