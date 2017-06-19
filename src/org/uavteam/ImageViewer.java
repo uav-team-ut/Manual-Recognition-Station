@@ -92,12 +92,8 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
                 BufferedImage fromServer= ImageIO.read(new ByteArrayInputStream(bd.decodeBuffer(jsonImage.getString("data_warped"))));
                 Graphics2D g = image.createGraphics();
                 g.setComposite(AlphaComposite.Src);
-                int x=fromServer.getWidth();
-                int y = fromServer.getHeight();
-                double zarg=1.0/(1.0*fromServer.getWidth()/imgX);
-                double barg=1.0/(1.0*fromServer.getHeight()/imgY);
-                double ratio=1.0*fromServer.getHeight()/fromServer.getWidth();
-                AffineTransform at =AffineTransform.getScaleInstance(1.0/(1.0*fromServer.getWidth()/imgX*ratio),1.0/(1.0*fromServer.getHeight()/(imgY)));
+                double ratio=1.0*fromServer.getWidth()/imgX>1.0*fromServer.getHeight()/imgY?1.0*fromServer.getHeight()/imgY:1.0*fromServer.getWidth()/imgX;
+                AffineTransform at =AffineTransform.getScaleInstance(1/ratio,1/ratio);
                 g.drawRenderedImage(fromServer,at);
 
 
@@ -114,7 +110,7 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
                 wr.write(postData);
                 System.out.println("\nSending 'PATCH' request to URL : " + url2);
                 System.out.println("Response Code : " + con2.getResponseCode());
-                return new ImageData(image, jsonImage.getDouble("lat"), jsonImage.getDouble("lon"), jsonImage.getDouble("width"), jsonImage.getDouble("height"), "" + count++);
+                return new ImageData(image, jsonImage.getDouble("lat"), jsonImage.getDouble("lon"), jsonImage.getDouble("width"), jsonImage.getDouble("height"),0, "" + count++);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -189,19 +185,19 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
 //            ImageIO.write(target.getImage(), "png", new File(targetDir+"\\target" + target.getId() + ".png"));
 //            FileWriter fw = new FileWriter(targetDir+"\\target-"+target.getId()+".txt");
 //            BufferedWriter bw = new BufferedWriter(fw);
-//            bw.write(""+target.getLat());
-//            bw.newLine();
-//            bw.write(""+target.getLon());
-//            bw.newLine();
-//            bw.write(""+target.getRotation());
-//            bw.newLine();
-//            bw.write(""+target.getShape());
-//            bw.newLine();
-//            bw.write(""+target.getShapeColor());
-//            bw.newLine();
-//            bw.write(""+target.getLetter());
-//            bw.newLine();
-//            bw.write(""+target.getLetterColor());
+//            bw.write("{\"type\": \""+target.getType()+"\",");
+//            bw.write("\"latitude\": "+target.getLat()+",");
+//            bw.write("\"longitude\": "+target.getLon()+",");
+//            if(target.getType().equals("standard")) {
+//                bw.write("\"orientation\": \"" + target.getRotation()+"\",");
+//                bw.write("\"shape\": \"" + target.getShape()+"\",");
+//                bw.write("\"background_color\": \"" + target.getShapeColor()+"\",");
+//                bw.write("\"alphanumeric\": \"" + target.getLetter()+"\",");
+//                bw.write("\"alphanumeric_color\": \"" + target.getLetterColor());
+//            }
+//            else if(target.getType().equals("emergent")){
+//                bw.write("\"description: \""+target.getDesc());
+//            }
 //            bw.close();
 //            fw.close();
 //            previousImageData=imageData;

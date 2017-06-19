@@ -147,7 +147,7 @@ public class ImageViewerGUI {
                     DescField.setText("");
                     DescField.setEditable(false);
                     TypeField.setText("standard");
-                    currImage.setTargetMetaData(ShapeBox.getSelectedItem().toString(),ShapeColorBox.getSelectedItem().toString(),LetterField.getText(),LetterColorBox.getSelectedItem().toString(),TypeField.getText());
+                    currImage.setTargetMetaData(ShapeBox.getSelectedItem().toString(),ShapeColorBox.getSelectedItem().toString(),LetterField.getText(),LetterColorBox.getSelectedItem().toString(),TypeField.getText(),DescField.getText());
                     SubmitThread thread=new SubmitThread(currImage.getTarget());
                     thread.start();
                     state=0;
@@ -282,6 +282,8 @@ public class ImageViewerGUI {
     }
     public void setImagePanel(BufferedImage img){
         Graphics2D g = (Graphics2D)bs.getDrawGraphics();
+        g.setColor(Color.lightGray);
+        g.fillRect(0,0,1280,720);
         g.drawImage(img,0,0,c);
         bs.show();
 

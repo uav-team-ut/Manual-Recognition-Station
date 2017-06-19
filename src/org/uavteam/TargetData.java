@@ -18,6 +18,7 @@ public class TargetData {
     String letter;
     String id;
     String type;
+    String desc;
     public TargetData(BufferedImage t, double lat, double lon, String rot, String shape, String sColor, String letter, String lColor, String id, String type){
         target=t;
         this.lat=lat;
@@ -29,6 +30,7 @@ public class TargetData {
         this.letterColor=lColor;
         this.id=id;
         this.type=type;
+        this.desc="";
     }
     public TargetData(double lat, double lon, String id) {
         target = null;
@@ -41,6 +43,7 @@ public class TargetData {
         this.letterColor = "White";
         this.id=id;
         type="standard";
+        desc="";
     }
     public void addTarget(BufferedImage t ){
         target=t;
@@ -52,12 +55,13 @@ public class TargetData {
     public void setRotation(String s) {
         rotation=s;
     }
-    public void setMetaData(String s, String sColor, String l, String lColor, String t){
+    public void setMetaData(String s, String sColor, String l, String lColor, String t,String desc){
         shape=s.toLowerCase();
         shapeColor=sColor.toLowerCase();
         letter=l.toLowerCase();
         letterColor=lColor.toLowerCase();
-        t=t.toLowerCase();
+        type=t.toLowerCase();
+        this.desc=desc;
         if(t.equals("standard")||t.equals("emergent")||t.equals("off-axis")) {
             type = t;
         }
@@ -72,4 +76,5 @@ public class TargetData {
     public BufferedImage getImage(){return target;}
     public String getType(){return type;}
     public String getId(){return id;}
+    public String getDesc(){return desc;}
 }

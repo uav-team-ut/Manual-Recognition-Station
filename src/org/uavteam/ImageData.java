@@ -23,19 +23,20 @@ public class ImageData {
     double tx;
     double ty;
     String id;
-    public ImageData(BufferedImage img, double lat, double lon, double width, double height, String id){
+    public ImageData(BufferedImage img, double lat, double lon, double width, double height,double yaw, String id){
         this.img=img;
         this.lat=lat;
         this.lon=lon;
         this.width=width;
         this.height=height;
+        this.yaw=yaw;
         tx=0;
         ty=0;
         this.id=id;
         target = new TargetData(lat,lon, id);
     }
     public void setTargetRotation(int x, int y){
-        double dir= atan2(ty-y,x-tx);
+        double dir= atan2(ty-y,x-tx)+yaw/180*Math.PI;
         String dirString="";
         if(dir<0)
             dir=dir+2*Math.PI;
@@ -57,8 +58,8 @@ public class ImageData {
             dirString="se";
         target.setRotation(dirString);
     }
-    public void setTargetMetaData(String shape, String sColor, String letter, String lColor, String t) {
-        target.setMetaData(shape, sColor, letter, lColor, t);
+    public void setTargetMetaData(String shape, String sColor, String letter, String lColor, String t,String desc) {
+        target.setMetaData(shape, sColor, letter, lColor, t,desc);
     }
     public void cropTarget(int x1, int y1, int x2, int y2){//FIXME
         //crop out target
@@ -68,9 +69,11 @@ public class ImageData {
 
 
     }
-    public void setTargetCenter(int x, int y){//FIXME
+    public void setTargetCenter(double x, double y){//FIXME
         this.tx=x;
         this.ty=y;
+        x=x*cos(yaw)+y*sin(yaw);
+        y=-x*sin(yaw)+y*cos(yaw);
         double a=6378137;
         double b=6356752;
         lat=Math.toRadians(lat);
