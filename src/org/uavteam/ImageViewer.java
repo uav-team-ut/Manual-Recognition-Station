@@ -151,10 +151,16 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
             ByteArrayOutputStream baos=new ByteArrayOutputStream();
             ImageIO.write(target.getImage(),"png",baos);
             String imageString=be.encode(baos.toByteArray());
-            String jsonStringNoData = "\",\"type\":\""+target.getType()+"\",\"latitude\":"+target.getLat()+",\"longitude\":"+target.getLon()+",\"orientation\":\""+target.getRotation() +
-                    "\",\"shape\":\""+target.getShape()+"\",\"background_color\":\""+target.getShapeColor()+"\",\"alphanumeric\":\""
-                    +target.getLetter()+"\",\"alphanumeric_color\":\""+target.getLetterColor()
-                    +"\",\"autonomous\":false}";
+            String jsonStringNoData="";
+            if(target.getType().equals("standard")) {
+                jsonStringNoData = "\",\"type\":\"" + target.getType() + "\",\"latitude\":" + target.getLat() + ",\"longitude\":" + target.getLon() + ",\"orientation\":\"" + target.getRotation() +
+                        "\",\"shape\":\"" + target.getShape() + "\",\"background_color\":\"" + target.getShapeColor() + "\",\"alphanumeric\":\""
+                        + target.getLetter() + "\",\"alphanumeric_color\":\"" + target.getLetterColor()
+                        + "\",\"autonomous\":false}";
+            }
+            else if(target.getType().equals("emergent")){
+                jsonStringNoData = "\",\"type\":\"" + target.getType() + "\",\"latitude\":" + target.getLat() + ",\"longitude\":" + target.getLon() + ",\"description\":\""+target.getDesc() +"\"}";
+            }
             String jsonString="{\"data\":\"";
             String temp="";
             for(int i=0;i<imageString.length();i++){

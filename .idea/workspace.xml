@@ -7,16 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e458240e-9732-486c-a8fa-8de21e93b84b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageData.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewer.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$1.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/ImageViewerGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/TargetData.class" afterPath="$PROJECT_DIR$/out/production/ManualRecognitionStation/org/uavteam/TargetData.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/uavteam/ImageData.java" afterPath="$PROJECT_DIR$/src/org/uavteam/ImageData.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/uavteam/ImageViewer.java" afterPath="$PROJECT_DIR$/src/org/uavteam/ImageViewer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java" afterPath="$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/uavteam/TargetData.java" afterPath="$PROJECT_DIR$/src/org/uavteam/TargetData.java" />
     </list>
     <ignored path="ManualRecognitionStation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +31,8 @@
       <file leaf-file-name="ImageViewer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1666">
-              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="161" column="196" selection-start-line="161" selection-start-column="196" selection-end-line="161" selection-end-column="196" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -869,8 +860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1666">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="161" column="196" selection-start-line="161" selection-start-column="196" selection-end-line="161" selection-end-column="196" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
