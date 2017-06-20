@@ -162,17 +162,14 @@ public class ImageViewer {//TODO: add ability to clear screen, go back an image,
                 jsonStringNoData = "\",\"type\":\"" + target.getType() + "\",\"latitude\":" + target.getLat() + ",\"longitude\":" + target.getLon() + ",\"description\":\""+target.getDesc() +"\"}";
             }
             String jsonString="{\"data\":\"";
-            String temp="";
+            //remove carriage returns
             for(int i=0;i<imageString.length();i++){
                 if(imageString.charAt(i)==13 || imageString.charAt(i)==10){
                     continue;//lmao?
                 }
                 jsonString+=imageString.charAt(i);
-                temp+=imageString.charAt(i);
             }
             jsonString+=jsonStringNoData;
-            //System.out.println((int)jsonString.charAt(84)+"\t"+(int)jsonString.charAt(85)+"\t"+(int)jsonString.charAt(86));
-            //System.out.println(jsonString);
             byte[] postData=jsonString.getBytes(StandardCharsets.UTF_8);
             URL url = new URL(baseIp+"/api/targets");//FIXME
 

@@ -40,6 +40,7 @@ public class ImageViewerGUI {
 
 
     public ImageViewerGUI() {
+        //So I hard-coded this, fight me
         LetterColorBox=new ColorComboBox();
         LetterColorBox.setEditable(true);
         LetterColorBox.setLightWeightPopupEnabled(false);
@@ -187,10 +188,6 @@ public class ImageViewerGUI {
             public void keyTyped(KeyEvent e) {
                 if(!DescField.isEditable()) {
                     DescField.setEditable(true);
-//                    try{
-//                        Thread.sleep(1000);
-//                    }catch(Exception exc){exc.printStackTrace();}
-                   // DataPanel.repaint();
                 }
 
             }

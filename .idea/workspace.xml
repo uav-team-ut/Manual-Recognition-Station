@@ -7,7 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e458240e-9732-486c-a8fa-8de21e93b84b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/uavteam/ImageViewer.java" afterPath="$PROJECT_DIR$/src/org/uavteam/ImageViewer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java" afterPath="$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java" />
     </list>
     <ignored path="ManualRecognitionStation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ImageViewer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ImageViewer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="161" column="196" selection-start-line="161" selection-start-column="196" selection-end-line="161" selection-end-column="196" />
+            <state relative-caret-position="-257">
+              <caret line="164" column="37" selection-start-line="164" selection-start-column="37" selection-end-line="164" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -40,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImageViewerGUI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ImageViewerGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="148" column="37" selection-start-line="148" selection-start-column="37" selection-end-line="148" selection-end-column="37" />
+            <state relative-caret-position="69">
+              <caret line="189" column="48" selection-start-line="189" selection-start-column="48" selection-end-line="189" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -120,10 +122,10 @@
         <option value="$PROJECT_DIR$/src/org/uavteam/ColorComboBox.java" />
         <option value="$PROJECT_DIR$/src/org/uavteam/DrawablePanel.java" />
         <option value="$PROJECT_DIR$/src/org/uavteam/SubmitThread.java" />
-        <option value="$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java" />
         <option value="$PROJECT_DIR$/src/org/uavteam/ImageData.java" />
         <option value="$PROJECT_DIR$/src/org/uavteam/TargetData.java" />
         <option value="$PROJECT_DIR$/src/org/uavteam/ImageViewer.java" />
+        <option value="$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java" />
       </list>
     </option>
   </component>
@@ -840,16 +842,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="148" column="37" selection-start-line="148" selection-start-column="37" selection-end-line="148" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1921">
@@ -860,8 +852,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="161" column="196" selection-start-line="161" selection-start-column="196" selection-end-line="161" selection-end-column="196" />
+        <state relative-caret-position="-257">
+          <caret line="164" column="37" selection-start-line="164" selection-start-column="37" selection-end-line="164" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/uavteam/ImageViewerGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="189" column="48" selection-start-line="189" selection-start-column="48" selection-end-line="189" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
